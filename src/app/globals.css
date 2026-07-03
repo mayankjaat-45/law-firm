@@ -4,20 +4,67 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base theme */
+  --background: #f8f3e8;
+  --foreground: #121826;
+
+  /* Law firm palette */
+  --law-navy: #08111f;
+  --law-navy-soft: #101827;
+  --law-navy-light: #162033;
+
+  --law-gold: #d4af37;
+  --law-gold-dark: #a47c15;
+  --law-gold-soft: #f3df9b;
+
+  --law-cream: #f8f3e8;
+  --law-cream-dark: #eee5d4;
+
+  --law-border: rgba(17, 24, 39, 0.12);
+  --law-muted: #5f6675;
 }
 
 .dark {
   --background: #05070d;
   --foreground: #ededed;
+
+  --law-navy: #05070d;
+  --law-navy-soft: #101827;
+  --law-navy-light: #182235;
+
+  --law-gold: #d4af37;
+  --law-gold-dark: #f3d879;
+  --law-gold-soft: #f5df93;
+
+  --law-cream: #080d16;
+  --law-cream-dark: #0f1726;
+
+  --law-border: rgba(255, 255, 255, 0.12);
+  --law-muted: #aeb6c8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-law-navy: var(--law-navy);
+  --color-law-navy-soft: var(--law-navy-soft);
+  --color-law-navy-light: var(--law-navy-light);
+
+  --color-law-gold: var(--law-gold);
+  --color-law-gold-dark: var(--law-gold-dark);
+  --color-law-gold-soft: var(--law-gold-soft);
+
+  --color-law-cream: var(--law-cream);
+  --color-law-cream-dark: var(--law-cream-dark);
+  --color-law-muted: var(--law-muted);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -25,7 +72,80 @@ html {
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+/* Premium law firm serif heading */
+.law-serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Optional premium section background */
+.law-hero-bg {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(212, 175, 55, 0.22),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(212, 175, 55, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #08111f 0%, #101827 45%, #05070d 100%);
+}
+
+/* Subtle legal template-style background */
+.law-pattern {
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Premium gold text */
+.law-gold-text {
+  color: var(--law-gold);
+}
+
+/* Premium card utility */
+.law-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--law-border);
+  box-shadow: 0 20px 60px rgba(8, 17, 31, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.dark .law-card {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* Better selection color */
+::selection {
+  background: var(--law-gold);
+  color: #08111f;
+}
+
+/* Cleaner scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--law-gold);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--law-gold-dark);
 }
